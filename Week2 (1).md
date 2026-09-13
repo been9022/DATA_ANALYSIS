@@ -38,16 +38,99 @@ https://www.youtube.com/watch?v=Il6L8OtNFpc&list=PLVsNizTWUw7FGzSRCkQrPEEe-ljVXg
 
 ## 01. API 사용하기
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+API와 HTTP
+
+API는 프로그램이 다른 프로그램이나 서버에 데이터를 요청하고 받아오기 위한 방식이다. 웹에서 사용하는 API는 주로 HTTP 통신을 이용한다.
+
+HTTP에서는 클라이언트가 서버에 데이터를 요청하면 서버가 그에 맞는 데이터를 응답한다. 이때 주고받는 데이터는 주로 CSV, JSON, XML 등의 형태로 제공된다.
+
+JSON
+
+JSON은 딕셔너리와 리스트를 조합하여 데이터를 표현하는 형식이다. 파이썬의 딕셔너리 구조와 비슷해서 다루기 편리하다.
+
+import json
+import pandas as pd
+json.dumps() : 파이썬 객체 → JSON 문자열
+json.loads() : JSON 문자열 → 파이썬 객체
+pd.read_json() : JSON → 데이터프레임
+pd.DataFrame() : 딕셔너리 등의 파이썬 객체 → 데이터프레임
+XML
+
+XML은 데이터를 태그로 표현하며, 부모와 자식 요소가 있는 계층적인 구조를 가진다.
+
+import xml.etree.ElementTree as et
+import pandas as pd
+et.fromstring() : XML 문자열 → 파이썬에서 처리 가능한 객체
+.tag : 해당 엘리먼트의 태그 이름 확인
+.findtext() : 특정 자식 엘리먼트의 텍스트 가져오기
+.findall() : 조건에 맞는 여러 자식 엘리먼트 찾기
+pd.read_xml() : XML → 데이터프레임
+API를 이용해 데이터 가져오기
+
+데이터를 사용하는 방법에는 CSV·JSON·XML 파일을 직접 다운로드하는 방법과 파이썬에서 API를 호출해 데이터를 받아오는 방법이 있다.
+
+파이썬에서는 requests 패키지를 이용해 API에 요청할 수 있다.
+
+import requests
+import pandas as pd
+
+url = 'API 주소'
+
+r = requests.get(url)   # API에 데이터 요청
+data = r.json()         # 받은 JSON 데이터를 파이썬 객체로 변환
+df = pd.DataFrame(data) # 데이터프레임으로 변환
 
 ## 02.웹 스크래핑 사용하기
 
-<!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+
+웹 스크래핑은 웹사이트에서 필요한 정보를 직접 추출하는 방법이다. HTML은 데이터 분석을 위해 만들어진 형식이 아니기 때문에, 가능하다면 웹 스크래핑보다 공개 API가 있는지 먼저 확인하는 것이 좋다.
+
+BeautifulSoup을 이용한 웹 스크래핑 과정
+
+파이썬에서는 주로 requests와 BeautifulSoup을 함께 사용한다.
+
+import requests
+from bs4 import BeautifulSoup
+
+전체적인 과정은 웹페이지 요청 → HTML 가져오기 → HTML 분석 → 원하는 태그 찾기 → 필요한 정보 추출 순서로 진행된다.
+
+1. 웹페이지 요청
+
+r = requests.get(url.format(isbn))
+
+requests.get()을 이용해 URL에 접속하고 해당 페이지의 데이터를 가져온다.
+
+2. HTML 파싱
+
+soup = BeautifulSoup(r.text, 'html.parser')
+
+r.text로 가져온 HTML 문자열을 BeautifulSoup을 이용해 분석하기 쉬운 형태로 변환한다.
+
+3. 원하는 HTML 요소 찾기
+
+prd_info = soup.find('a', attrs={'class': 'gd_name'})
+
+.find()를 이용하면 원하는 태그를 찾을 수 있다.
+위 코드에서는 a 태그 중 class="gd_name"인 요소를 찾는다.
+
+4. 링크를 이용해 새로운 페이지 접속
+
+r = requests.get(url + prd_info['href'])
+
+찾은 태그의 href 속성에서 링크를 가져와 상세 페이지에 다시 접속한다. 이후 같은 방식으로 HTML을 파싱하고 원하는 정보를 추출하면 된다.
+
+BeautifulSoup의 역할
+
+BeautifulSoup은 HTML 문서를 분석하고 원하는 태그나 텍스트를 쉽게 찾을 수 있게 해주는 파이썬 패키지이다.
 
 
 # 2️⃣ 수행 인증
 
-<!-- 교재에서 안내된 과정을 직접 실행해본 뒤, 진행 결과가 보이도록 4~6장의 스크린샷을 캡처하여 아래에 첨부해주세요.-->
+
+<img width="686" height="440" alt="인4" src="https://github.com/user-attachments/assets/4ed8c214-15a0-4ce5-878e-d3a69fd6a41c" />
+<img width="930" height="632" alt="인3" src="https://github.com/user-attachments/assets/4119443a-10f1-434d-81e0-d54e01beb492" />
+<img width="1277" height="592" alt="인2" src="https://github.com/user-attachments/assets/13db5ae6-0a02-4104-a75c-66aece7529c5" />
+<img width="1797" height="662" alt="인1" src="https://github.com/user-attachments/assets/35c4ed59-be18-44b7-a2eb-5d2822b5f29d" />
 
 
 
@@ -68,7 +151,9 @@ https://www.youtube.com/watch?v=Il6L8OtNFpc&list=PLVsNizTWUw7FGzSRCkQrPEEe-ljVXg
 ```
 
 ```
-여기에 선택한 답과 그 이유를 간단히 서술해주세요!
+Scrapy
+
+이유: Scrapy는 웹사이트의 데이터를 자동으로 수집하고 처리할 수 있도록 만들어진 웹 스크래핑 전용 파이썬 패키지이기 때문이다. BeautifulSoup과 마찬가지로 웹에서 필요한 정보를 추출할 때 사용할 수 있다.
 ```
 
 
