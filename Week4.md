@@ -1,3 +1,4 @@
+<img width="1525" height="657" alt="데분4_1" src="https://github.com/user-attachments/assets/4981a913-d550-4d23-873d-01a459255f56" />
 # 데이터분석 4주차 정규과제
 
 📌데이터분석 정규과제는 매주 정해진 분량의 『*혼자 공부하는 데이터 분석 with 파이썬*』 을 읽고 학습하는 것입니다. 이번 주는 아래의 **DataAnalysis_4th_TIL**에 나열된 분량을 읽고 공부하시면 됩니다.
@@ -211,6 +212,11 @@ plt.show()	그래프를 화면에 출력
 # 2️⃣ 수행 인증
 
 
+<img width="996" height="592" alt="데분4_5" src="https://github.com/user-attachments/assets/cbb8cbc3-bf20-4e2f-b725-0f76b15ec265" />
+<img width="1306" height="592" alt="데분4_4" src="https://github.com/user-attachments/assets/6e18fcdb-6c10-4f94-8ef7-b617f69d47a9" />
+<img width="1470" height="536" alt="데분4_3" src="https://github.com/user-attachments/assets/1307db01-9e13-4a29-a3c9-aca3aad32c7e" />
+<img width="1525" height="657" alt="데분4_1" src="https://github.com/user-attachments/assets/351519d0-8f12-42f4-960c-de1f060e1da1" />
+<img width="1407" height="617" alt="데분4_2" src="https://github.com/user-attachments/assets/ea383b72-8a2c-4ec3-a853-219b14af3435" />
 
 
 <br>
