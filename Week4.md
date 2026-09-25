@@ -1,4 +1,4 @@
-<img width="1525" height="657" alt="데분4_1" src="https://github.com/user-attachments/assets/4981a913-d550-4d23-873d-01a459255f56" />
+
 # 데이터분석 4주차 정규과제
 
 📌데이터분석 정규과제는 매주 정해진 분량의 『*혼자 공부하는 데이터 분석 with 파이썬*』 을 읽고 학습하는 것입니다. 이번 주는 아래의 **DataAnalysis_4th_TIL**에 나열된 분량을 읽고 공부하시면 됩니다.
