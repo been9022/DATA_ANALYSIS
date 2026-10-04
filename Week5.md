@@ -206,6 +206,7 @@ img.shape는 일반적으로 **(높이, 너비, 채널 수)**를 나타낸다.
 3️⃣ y축 이름은 "Y values"로 설정해주세요.
 4️⃣ 마커(marker)를 포함하여 선그래프를 그려주세요.
 ```
+```
 import matplotlib.pyplot as plt
 
 x = [1, 2, 3, 4, 5]
