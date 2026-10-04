@@ -90,9 +90,7 @@ plt.subplots(1, 2)	가로로 그래프 2개
 plt.subplots(2, 3)	2행 3열, 총 6개
 
 
-```python
-fig, axs = plt.subplots(1, 2)
-```에서 fig는 전체 Figure이고, axs[0]과 axs[1]은 각각 첫 번째와 두 번째 그래프이다.
+fig, axs = plt.subplots(1, 2) 에서 fig는 전체 Figure이고, axs[0]과 axs[1]은 각각 첫 번째와 두 번째 그래프이다.
 ⑦ 제목·축 이름·축 스케일 설정
 메서드	기능
 set_title()	그래프 제목 설정
@@ -207,8 +205,6 @@ img.shape는 일반적으로 **(높이, 너비, 채널 수)**를 나타낸다.
 2️⃣ x축 이름은 "X values"로 설정해주세요.
 3️⃣ y축 이름은 "Y values"로 설정해주세요.
 4️⃣ 마커(marker)를 포함하여 선그래프를 그려주세요.
-```
-
 ```
 import matplotlib.pyplot as plt
 
