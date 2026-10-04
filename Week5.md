@@ -185,8 +185,10 @@ img.shape는 일반적으로 **(높이, 너비, 채널 수)**를 나타낸다.
 
 # 2️⃣ 수행 인증
 
-<!-- 교재에서 안내된 과정을 직접 실행해본 뒤, 진행 결과가 보이도록 4~6장의 스크린샷을 캡처하여 아래에 첨부해주세요.-->
-
+<img width="1142" height="657" alt="데분5" src="https://github.com/user-attachments/assets/2db61ebf-581d-435a-9342-b08c28403fb5" />
+<img width="1357" height="617" alt="데분4" src="https://github.com/user-attachments/assets/28501a35-30c2-4617-b9be-5432dfb454f7" />
+<img width="1411" height="552" alt="데분3" src="https://github.com/user-attachments/assets/711ff69b-ba55-4828-98ea-2f0f7403737c" />
+<img width="1225" height="587" alt="데분1" src="https://github.com/user-attachments/assets/7227144c-0127-4eca-bf52-2ad6402458e5" />
 
 
 <br>
