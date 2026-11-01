@@ -68,17 +68,31 @@ JOIN은 여러 테이블을 연결해서 분석 질문에 답하기 위해 반�
 ## 01.
 
 ```
-개념 이름:
-개념 설명:
+개념 이름: JOIN
+개념 설명: 서로 다른 데이터 테이블을 연결하는 것
 예시 쿼리:
+SELECT
+    A.col1,
+    A.col2,
+    B.col11,
+    B.col12
+FROM table_a AS A
+LEFT JOIN table_b AS B
+ON A.key = B.key
 ```
 
 ## 02.
 
 ```
-개념 이름:
-개념 설명:
+개념 이름: INNER JOIN
+개념 설명: 두 테이블에서 JOIN 조건에 일치하는, key가 양쪽에 모두 있는 행만 연결하는 JOIN
 예시 쿼리:
+ SELECT
+ col
+FROM table_a AS A
+INNER JOIN table_b AS B
+ON A.key=B.key
+
 ```
 
 ## (선택) 03.
@@ -95,9 +109,8 @@ JOIN은 여러 테이블을 연결해서 분석 질문에 답하기 위해 반�
 
 아래 중 하나 이상을 첨부해주세요.
 
-- 강의 수강 화면 캡처
-- JOIN 문제 풀이 정답 화면 캡처
-- JOIN 전후 결과 row 수를 비교한 캡처 또는 메모
+<img width="457" height="372" alt="강의수강" src="https://github.com/user-attachments/assets/fcc0fba4-b4d0-4521-8504-3ebc1964bb1d" />
+
 
 ---
 
@@ -109,58 +122,87 @@ JOIN은 여러 테이블을 연결해서 분석 질문에 답하기 위해 반�
 
 문제 링크: [조건에 맞는 도서와 저자 리스트 출력하기](https://school.programmers.co.kr/learn/courses/30/lessons/144854)
 
-풀이 과정:
+풀이 과정: SELECT B.BOOK_ID,
+       A.AUTHOR_NAME,
+       DATE_FORMAT(B.PUBLISHED_DATE, '%Y-%m-%d') AS PUBLISHED_DATE
+FROM BOOK AS B
+JOIN AUTHOR AS A
+    ON B.AUTHOR_ID = A.AUTHOR_ID
+WHERE B.CATEGORY = '경제'
+ORDER BY B.PUBLISHED_DATE ASC;
 
 ```
-- 사용한 테이블:
-- JOIN key:
-- 날짜를 출력한 형식:
+- 사용한 테이블: BOOK, AUTHOR
+- JOIN key AUTHOR_ID — 두 테이블에서 저자 ID가 같은 행끼리 연결
+- 날짜를 출력한 형식: YYYY-MM-DD
+<img width="1602" height="627" alt="1" src="https://github.com/user-attachments/assets/f46792be-fbff-4228-8185-f6e28e7959af" />
+
 ```
 
-<!-- 정답을 맞추게 되면, 정답입니다. 이 부분을 캡처해서 이 주석을 지우시고 첨부해주시면 됩니다. -->
+
 
 ## 🧩 문제 2
 
 문제 링크: [상품 별 오프라인 매출 구하기](https://school.programmers.co.kr/learn/courses/30/lessons/131533)
 
-풀이 과정:
+풀이 과정: SELECT P.PRODUCT_CODE,
+       SUM(P.PRICE * O.SALES_AMOUNT) AS SALES
+FROM PRODUCT AS P
+JOIN OFFLINE_SALE AS O
+    ON P.PRODUCT_ID = O.PRODUCT_ID
+GROUP BY P.PRODUCT_CODE
+ORDER BY SALES DESC, P.PRODUCT_CODE ASC;
 
 ```
-- 연결한 테이블:
-- JOIN key:
-- 집계한 값:
-```
+- 연결한 테이블: PRODUCT, OFFLINE_SALE
+- JOIN key: PRODUCT_ID
+- 집계한 값: 상품코드별 매출액 합계 → SUM(판매가 × 판매량)
+<img width="1122" height="487" alt="2" src="https://github.com/user-attachments/assets/dcb14309-b92a-4be7-9537-469dec4d151a" />
 
-<!-- 정답을 맞추게 되면, 정답입니다. 이 부분을 캡처해서 이 주석을 지우시고 첨부해주시면 됩니다. -->
+```
 
 ## 🧩 문제 3
 
 문제 링크: [없어진 기록 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/59042)
 
-풀이 과정:
+풀이 과정: SELECT O.ANIMAL_ID, O.NAME
+FROM ANIMAL_OUTS AS O
+LEFT JOIN ANIMAL_INS AS I
+    ON O.ANIMAL_ID = I.ANIMAL_ID
+WHERE I.ANIMAL_ID IS NULL
+ORDER BY O.ANIMAL_ID ASC;
 
 ```
-- 기준이 되는 왼쪽 테이블:
-- LEFT JOIN이 필요한 이유:
-- NULL이 발생하는 경우:
+- 기준이 되는 왼쪽 테이블: ANIMAL_OUTS
+- LEFT JOIN이 필요한 이유: 보호소 입소 기록이 없는 동물도 결과에 남겨야 하기 때문이다.
+- NULL이 발생하는 경우: 입양 기록의 ANIMAL_ID와 일치하는 입소 기록이 없으면, 오른쪽 테이블인 ANIMAL_INS의 열들이 NULL로 표시된다.
+<img width="1180" height="645" alt="3" src="https://github.com/user-attachments/assets/c0f4f215-bedd-4a75-b566-11c1068a7e03" />
+
 ```
 
-<!-- 정답을 맞추게 되면, 정답입니다. 이 부분을 캡처해서 이 주석을 지우시고 첨부해주시면 됩니다. -->
+
 
 ## 🧩 문제 4
 
 문제 링크: [있었는데요 없었습니다](https://school.programmers.co.kr/learn/courses/30/lessons/59043)
 
-풀이 과정:
+풀이 과정: SELECT I.ANIMAL_ID, I.NAME
+FROM ANIMAL_INS AS I
+JOIN ANIMAL_OUTS AS O
+    ON I.ANIMAL_ID = O.ANIMAL_ID
+WHERE O.DATETIME < I.DATETIME
+ORDER BY I.DATETIME ASC;
 
 ```
-- 사용한 테이블:
-- JOIN key:
-- 비교한 날짜 컬럼:
-- 정렬 기준:
+- 사용한 테이블: ANIMAL_INS, ANIMAL_OUTS
+- JOIN key: ANIMAL_ID
+- 비교한 날짜 컬럼: O.DATETIME(입양일)과 I.DATETIME(보호 시작일)
+- 정렬 기준: I.DATETIME ASC
+<img width="1177" height="545" alt="4" src="https://github.com/user-attachments/assets/6db73625-acd1-4c84-b248-8652ff776467" />
+
 ```
 
-<!-- 정답을 맞추게 되면, 정답입니다. 이 부분을 캡처해서 이 주석을 지우시고 첨부해주시면 됩니다. -->
+
 
 ---
 
@@ -176,9 +218,9 @@ JOIN 개념이 헷갈린다면 아래 자료를 함께 참고해도 좋습니다
 # 5️⃣ 이번 주 회고
 
 ```
-1. INNER JOIN과 LEFT JOIN의 차이를 어떻게 이해했는지:
-2. JOIN 문제를 풀 때 가장 먼저 확인해야 할 것:
-3. JOIN 결과가 예상과 달랐던 경험이 있다면:
+1. INNER JOIN과 LEFT JOIN의 차이를 어떻게 이해했는지: INNER JOIN은 두 테이블에서 연결 조건이 일치하는 행만 가져오고, LEFT JOIN은 왼쪽 테이블의 모든 행을 남긴다. 이때 오른쪽 테이블에 일치하는 행이 없으면 오른쪽 컬럼들이 NULL로 표시된다.
+2. JOIN 문제를 풀 때 가장 먼저 확인해야 할 것: 두 테이블을 어떤 공통 컬럼으로 연결할지 확인해야 한다. 그다음 두 테이블에 모두 있는 데이터만 필요한지, 연결되지 않는 데이터도 남겨야 하는지 판단해 JOIN 종류와 기준 테이블을 정한다.
+3. JOIN 결과가 예상과 달랐던 경험이 있다면: 입양 기록은 있지만 입소 기록이 없는 동물을 찾는 문제에서 INNER JOIN을 사용하면 찾으려는 동물이 결과에서 빠진다는 점을 알게 되었다. 입양 기록을 기준으로 LEFT JOIN한 뒤, 입소 테이블의 동물 ID가 NULL인 행을 골라야 했다.
 ```
 
 수고하셨습니다!
