@@ -135,9 +135,9 @@ ORDER BY B.PUBLISHED_DATE ASC;
 - 사용한 테이블: BOOK, AUTHOR
 - JOIN key AUTHOR_ID — 두 테이블에서 저자 ID가 같은 행끼리 연결
 - 날짜를 출력한 형식: YYYY-MM-DD
-<img width="1602" height="627" alt="1" src="https://github.com/user-attachments/assets/f46792be-fbff-4228-8185-f6e28e7959af" />
 
 ```
+<img width="1602" height="627" alt="1" src="https://github.com/user-attachments/assets/43763276-a333-4098-b6f0-8c8d93a1d972" />
 
 
 
@@ -157,9 +157,10 @@ ORDER BY SALES DESC, P.PRODUCT_CODE ASC;
 - 연결한 테이블: PRODUCT, OFFLINE_SALE
 - JOIN key: PRODUCT_ID
 - 집계한 값: 상품코드별 매출액 합계 → SUM(판매가 × 판매량)
-<img width="1122" height="487" alt="2" src="https://github.com/user-attachments/assets/dcb14309-b92a-4be7-9537-469dec4d151a" />
 
 ```
+<img width="1122" height="487" alt="2" src="https://github.com/user-attachments/assets/f76ed841-7efe-4ce7-b7b4-d5adfc8325b2" />
+
 
 ## 🧩 문제 3
 
@@ -176,10 +177,10 @@ ORDER BY O.ANIMAL_ID ASC;
 - 기준이 되는 왼쪽 테이블: ANIMAL_OUTS
 - LEFT JOIN이 필요한 이유: 보호소 입소 기록이 없는 동물도 결과에 남겨야 하기 때문이다.
 - NULL이 발생하는 경우: 입양 기록의 ANIMAL_ID와 일치하는 입소 기록이 없으면, 오른쪽 테이블인 ANIMAL_INS의 열들이 NULL로 표시된다.
-<img width="1180" height="645" alt="3" src="https://github.com/user-attachments/assets/c0f4f215-bedd-4a75-b566-11c1068a7e03" />
 
 ```
 
+<img width="1180" height="645" alt="3" src="https://github.com/user-attachments/assets/0e271f60-c7bc-4705-aee2-4e00440c7926" />
 
 
 ## 🧩 문제 4
@@ -198,9 +199,9 @@ ORDER BY I.DATETIME ASC;
 - JOIN key: ANIMAL_ID
 - 비교한 날짜 컬럼: O.DATETIME(입양일)과 I.DATETIME(보호 시작일)
 - 정렬 기준: I.DATETIME ASC
-<img width="1177" height="545" alt="4" src="https://github.com/user-attachments/assets/6db73625-acd1-4c84-b248-8652ff776467" />
 
 ```
+<img width="1177" height="545" alt="4" src="https://github.com/user-attachments/assets/c534631f-7eae-4d30-a39e-6d5ec1b2c436" />
 
 
 
